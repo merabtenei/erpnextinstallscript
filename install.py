@@ -261,6 +261,7 @@ def install_bench(args):
 		else:
 			frappe_branch = "version-{0}".format(args.version)
 			erpnext_branch = "version-{0}".format(args.version)
+
 	# Allow override of frappe_branch and erpnext_branch, regardless of args.version (which always has a default set)
 	if args.frappe_branch:
 		frappe_branch = args.frappe_branch
@@ -445,7 +446,7 @@ def parse_commandline_args():
 	parser.add_argument('--erpnext-branch', dest='erpnext_branch', action='store', help='Clone a particular branch of erpnext')
 	parser.add_argument('--without-erpnext', dest='without_erpnext', action='store_true', default=False, help='Prevent fetching ERPNext')
 	# direct provision to install versions
-	parser.add_argument('--version', dest='version', action='store', default='12', help='Clone particular version of frappe and erpnext')
+	parser.add_argument('--version', dest='version', action='store', default='12', type=int, help='Clone particular version of frappe and erpnext')
 	# To enable testing of script using Travis, this should skip the prompt
 	parser.add_argument('--run-travis', dest='run_travis', action='store_true', default=False, help=argparse.SUPPRESS)
 	parser.add_argument('--without-bench-setup', dest='without_bench_setup', action='store_true', default=False, help=argparse.SUPPRESS)
